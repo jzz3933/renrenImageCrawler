@@ -5,12 +5,7 @@ Created on Sun Feb 10 13:10:03 2019
 @author: Jzz
 """
 
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Nov 22 16:25:49 2018
-创建爬取随手记记录的爬虫
-@author: Jzz
-"""
+
 import requests
 import sys
 from bs4 import BeautifulSoup
@@ -72,13 +67,11 @@ def savePic(albumUrl,cookies,requestToken,rtk):
     x= 0
     for albumId in albumIdlist:
         #每一个相册的网址
-    
-                  
-        
-#        single_album_url = 'http://photo.renren.com/photo/406187***/album-%s/v7' %albumId  # 该网址最多只能解析前40张图片，其余的滚动鼠标，通过ajax加载出来的 
+         
+#        single_album_url = 'http://photo.renren.com/photo/***/album-%s/v7' %albumId  # 该网址最多只能解析前40张图片，其余的滚动鼠标，通过ajax加载出来的 
         for page_index in range(1,10):
 #            print(albumId,str(page_index),requestToken,rtk)
-            single_album_single_page_url = 'http://photo.renren.com/photo/406187056/album-%s/bypage/ajax/v7?page=%s&pageSize=20&requestToken=%s&_rtk=%s'  %(albumId,str(page_index),requestToken,rtk)
+            single_album_single_page_url = 'http://photo.renren.com/photo/***/album-%s/bypage/ajax/v7?page=%s&pageSize=20&requestToken=%s&_rtk=%s'  %(albumId,str(page_index),requestToken,rtk)
             cont = requests.get(single_album_single_page_url,headers = headers, cookies = cookies)
             #相册内部的源代码
 #            print(cont.text)
@@ -103,17 +96,11 @@ def savePic(albumUrl,cookies,requestToken,rtk):
                         print('miao%s.jpg done' %x)
                         x+=1
 
-                       
-            
-    
-    
-#    except Exception as e:
-#        print(str(e))
       
 
 #登录后才能访问的网页
 url = 'http://www.renren.com/34434***' # 自己的登陆主页
-albumUrl = "http://photo.renren.com/photo/****/albumlist/v7?offset=0&limit=40#"# ***为你想下载图片的朋友的人人ID
+albumUrl = "http://photo.renren.com/photo/***/albumlist/v7?offset=0&limit=40#"# ***为你想下载图片的朋友的人人ID
 
  
 cookie_str = r'***'#为简便起见，利用cookie登陆，火狐浏览器可以利用HttpFox工具查看
